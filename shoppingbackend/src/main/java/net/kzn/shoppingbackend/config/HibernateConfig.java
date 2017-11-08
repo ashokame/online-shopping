@@ -19,11 +19,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class HibernateConfig {
 
 	// Change the below based on the DBMS you choose     
-	private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/onlineshopping";
-	private final static String DATABASE_DRIVER = "org.h2.Driver";
-	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
-	private final static String DATABASE_USERNAME = "sa";
-	private final static String DATABASE_PASSWORD = "";
+	private final static String DATABASE_URL = "jdbc:oracle:thin:@localhost:1521:xe";
+	private final static String DATABASE_DRIVER = "oracle.jdbc.OracleDriver";
+	private final static String DATABASE_DIALECT = "org.hibernate.dialect.Oracle10gDialect";
+	private final static String DATABASE_USERNAME = "ashok";
+	private final static String DATABASE_PASSWORD = "admin";
 	
 	// dataSource bean will be available
 	@Bean("dataSource")
@@ -64,7 +64,7 @@ public class HibernateConfig {
 		properties.put("hibernate.dialect", DATABASE_DIALECT);		
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
-		properties.put("hibernate.hbm2ddl.auto", "create");
+		//properties.put("hibernate.hbm2ddl.auto", "create");
 
 		return properties;
 	}
