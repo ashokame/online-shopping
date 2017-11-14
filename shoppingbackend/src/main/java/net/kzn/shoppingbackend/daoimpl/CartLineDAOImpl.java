@@ -23,16 +23,19 @@ public class CartLineDAOImpl implements CartLineDAO {
 	public CartLine getByCartAndProduct(int cartId, int productId) {
 		String query = "FROM CartLine WHERE cartId = :cartId AND product.id = :productId";
 		try {
+			
 			return sessionFactory.getCurrentSession()
 									.createQuery(query,CartLine.class)
 										.setParameter("cartId", cartId)
 										.setParameter("productId", productId)
 											.getSingleResult();
+			
 		}catch(Exception ex) {
 			return null;	
 		}
 		
 	}
+
 	@Override
 	public boolean add(CartLine cartLine) {
 		try {
@@ -96,11 +99,7 @@ public class CartLineDAOImpl implements CartLineDAO {
 	@Override
 	public List<CartLine> listAvailable(int cartId) {
 		String query = "FROM CartLine WHERE cartId = :cartId AND available = :available";
-		return sessionFactory.getCurrentSession()
-								.createQuery(query, CartLine.class)
-									.setParameter("cartId", cartId)
-									.setParameter("available", true)
-										.getResultList();
+		return sessionFactory.getCurrentSession().createQuery(query, CartLine.class).setParameter("cartId", cartId).setParameter("available", true).getResultList();
 	}
 
 	@Override

@@ -36,9 +36,9 @@ public class Address implements Serializable {
 	@NotBlank(message = "Please enter Postal Code!")	
 	private String postalCode;
 	@Column(name="is_shipping")
-	private boolean shipping;
+	private int shipping;
 	@Column(name="is_billing")
-	private boolean billing;
+	private int billing;
 	public int getId() {
 		return id;
 	}
@@ -81,10 +81,10 @@ public class Address implements Serializable {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-	public boolean isBilling() {
+	public int isBilling() {
 		return billing;
 	}
-	public void setBilling(boolean billing) {
+	public void setBilling(int billing) {
 		this.billing = billing;
 	}
 	
@@ -97,10 +97,10 @@ public class Address implements Serializable {
 		
 	@Column(name = "user_id")
 	private int userId;
-	public boolean isShipping() {
+	public int isShipping() {
 		return shipping;
 	}
-	public void setShipping(boolean shipping) {
+	public void setShipping(int shipping) {
 		this.shipping = shipping;
 	}
 	public int getUserId() {
