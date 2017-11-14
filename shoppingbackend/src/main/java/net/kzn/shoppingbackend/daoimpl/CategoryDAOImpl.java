@@ -25,7 +25,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
 				
-		query.setParameter("active", true);
+		query.setParameter("active", 1);
 						
 		return query.getResultList();
 	}
@@ -74,7 +74,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	public boolean delete(Category category) {
 		
-		category.setActive(false);
+		category.setActive(0);
 		
 		try {
 			// add the category to the database table

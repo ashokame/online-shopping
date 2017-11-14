@@ -77,7 +77,7 @@ public class UserDAOImpl implements UserDAO {
 				.getCurrentSession()
 					.createQuery(selectQuery,Address.class)
 						.setParameter("userId", userId)
-						.setParameter("isShipping", true)
+						.setParameter("isShipping", 1)
 							.getResultList();
 		
 	}
@@ -90,7 +90,7 @@ public class UserDAOImpl implements UserDAO {
 				.getCurrentSession()
 					.createQuery(selectQuery,Address.class)
 						.setParameter("userId", userId)
-						.setParameter("isBilling", true)
+						.setParameter("isBilling", 1)
 						.getSingleResult();
 		}
 		catch(Exception ex) {

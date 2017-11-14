@@ -8,7 +8,6 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
@@ -26,7 +25,7 @@ public class Product implements Serializable {
 	
 	// private fields
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue()
 	private int id;
 	private String code;
 	@NotBlank(message = "Please enter the product name!")
@@ -40,7 +39,7 @@ public class Product implements Serializable {
 	private double unitPrice;
 	private int quantity;
 	@Column(name = "is_active")	
-	private boolean active;
+	private int active;
 	@Column(name = "category_id")
 	@JsonIgnore
 	private int categoryId;
@@ -49,7 +48,6 @@ public class Product implements Serializable {
 	private int supplierId;
 	private int purchases;
 	private int views;
-	
 	
 	@Transient
 	private MultipartFile file;
@@ -114,10 +112,10 @@ public class Product implements Serializable {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public boolean isActive() {
+	public int getActive() {
 		return active;
 	}
-	public void setActive(boolean active) {
+	public void setActive(int active) {
 		this.active = active;
 	}
 	public int getCategoryId() {

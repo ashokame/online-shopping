@@ -41,7 +41,7 @@ public class User implements Serializable{
 	private String role;
 	@NotBlank(message = "Please enter password!")
 	private String password;
-	private boolean enabled = true;
+	private int enabled = 1;
 	@Transient
 	private String confirmPassword;
 
@@ -94,10 +94,10 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isEnabled() {
+	public int getEnabled() {
 		return enabled;
 	}
-	public void setEnabled(boolean enabled) {
+	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
 	

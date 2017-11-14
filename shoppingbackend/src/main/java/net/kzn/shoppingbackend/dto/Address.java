@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -18,7 +17,7 @@ public class Address implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue()
 	private int id;
 	@NotBlank(message = "Please enter address line one!")
 	@Column(name = "address_line_one")
@@ -81,7 +80,7 @@ public class Address implements Serializable {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-	public int isBilling() {
+	public int getBilling() {
 		return billing;
 	}
 	public void setBilling(int billing) {
@@ -97,7 +96,7 @@ public class Address implements Serializable {
 		
 	@Column(name = "user_id")
 	private int userId;
-	public int isShipping() {
+	public int getShipping() {
 		return shipping;
 	}
 	public void setShipping(int shipping) {

@@ -89,7 +89,7 @@ public class ProductDAOImpl implements ProductDAO {
 	public boolean delete(Product product) {
 		try {
 			
-			product.setActive(false);
+			product.setActive(0);
 			// call the update method
 			return this.update(product);
 		}
@@ -105,7 +105,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery(selectActiveProducts, Product.class)
-						.setParameter("active", true)
+						.setParameter("active", 1)
 							.getResultList();
 	}
 
@@ -115,7 +115,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery(selectActiveProductsByCategory, Product.class)
-						.setParameter("active", true)
+						.setParameter("active", 1)
 						.setParameter("categoryId",categoryId)
 							.getResultList();
 	}
@@ -125,7 +125,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery("FROM Product WHERE active = :active ORDER BY id", Product.class)
-						.setParameter("active", true)
+						.setParameter("active", 1)
 							.setFirstResult(0)
 							.setMaxResults(count)
 								.getResultList();					
@@ -134,7 +134,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getProductsByParam(String param, int count) {
 		
-		String query = "FROM Product WHERE active = true ORDER BY " + param + " DESC";
+		String query = "FROM Product WHERE active = 1 ORDER BY " + param + " DESC";
 		
 		return sessionFactory
 					.getCurrentSession()

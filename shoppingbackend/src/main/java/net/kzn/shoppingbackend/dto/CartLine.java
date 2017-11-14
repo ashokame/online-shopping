@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -20,7 +19,7 @@ public class CartLine implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue()
 	private int id;
 	@OneToOne
 	private Product product;
@@ -31,14 +30,16 @@ public class CartLine implements Serializable {
 	private double total;
 	@Column(name = "buying_price")
 	private double buyingPrice;
+	@Column(name = "is_available")
+	private int available = 1;
+	
+	
 	public double getBuyingPrice() {
 		return buyingPrice;
 	}
 	public void setBuyingPrice(double buyingPrice) {
 		this.buyingPrice = buyingPrice;
 	}
-	@Column(name = "is_available")
-	private boolean available = true;
 	
 	public int getId() {
 		return id;
@@ -71,10 +72,10 @@ public class CartLine implements Serializable {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	public boolean isAvailable() {
+	public int getAvailable() {
 		return available;
 	}
-	public void setAvailable(boolean available) {
+	public void setAvailable(int available) {
 		this.available = available;
 	}
 		

@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -40,10 +39,10 @@ public class Category implements Serializable {
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
-	public boolean isActive() {
+	public int getActive() {
 		return active;
 	}
-	public void setActive(boolean active) {
+	public void setActive(int active) {
 		this.active = active;
 	}
 	
@@ -61,7 +60,7 @@ public class Category implements Serializable {
 	 * Private fields
 	 * */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue()
 	private int id;
 	
 	private String name;
@@ -72,7 +71,7 @@ public class Category implements Serializable {
 	private String imageURL;
 	
 	@Column(name = "is_active")
-	private boolean active = true;
+	private int active = 1;
 	
 	
 }
